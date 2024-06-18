@@ -1,0 +1,1267 @@
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module org.example.schoolequipment {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n\r\n    requires org.controlsfx.controls;\r\n    requires com.dlsc.formsfx;\r\n    requires net.synedra.validatorfx;\r\n    requires org.kordamp.ikonli.javafx;\r\n\r\n    opens org.example.schoolequipment to javafx.fxml;\r\n    exports org.example.schoolequipment;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/module-info.java	(date 1718722092736)
+@@ -6,7 +6,12 @@
+     requires com.dlsc.formsfx;
+     requires net.synedra.validatorfx;
+     requires org.kordamp.ikonli.javafx;
++    requires java.net.http;
++    requires com.google.gson;
+ 
+     opens org.example.schoolequipment to javafx.fxml;
+     exports org.example.schoolequipment;
++    exports org.example.schoolequipment.presentation.auth.sign_in;
++    exports org.example.schoolequipment.presentation.auth.sign_up;
++    opens org.example.schoolequipment.presentation.auth.sign_up to javafx.fxml;
+ }
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java b/src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java
+deleted file mode 100644
+--- a/src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ /dev/null	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
+@@ -1,2 +0,0 @@
+-package org.example.schoolequipment.helper;public class HttpRequestHelper {
+-}
+Index: src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java b/src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java
+deleted file mode 100644
+--- a/src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ /dev/null	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
+@@ -1,14 +0,0 @@
+-package org.example.schoolequipment.controller.auth;
+-
+-import javafx.fxml.FXML;
+-import javafx.scene.control.Label;
+-
+-public class HelloController {
+-    @FXML
+-    private Label welcomeText;
+-
+-    @FXML
+-    protected void onHelloButtonClick() {
+-        welcomeText.setText("Welcome to JavaFX Application!");
+-    }
+-}
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/model/Maintenance.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Maintenance {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Maintenance.java b/src/main/java/org/example/schoolequipment/model/Maintenance.java
+--- a/src/main/java/org/example/schoolequipment/model/Maintenance.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Maintenance.java	(date 1718372599449)
+@@ -1,2 +1,14 @@
+-package org.example.schoolequipment.model;public class Maintenance {
++package org.example.schoolequipment.model;
++
++import java.util.Date;
++
++public class Maintenance {
++    private String _id;
++    private String equipmentId;
++    private Date maintenanceDate;
++    private String notes;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
+Index: src/main/java/org/example/schoolequipment/model/LoanHistory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class LoanHistory {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/LoanHistory.java b/src/main/java/org/example/schoolequipment/model/LoanHistory.java
+--- a/src/main/java/org/example/schoolequipment/model/LoanHistory.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/LoanHistory.java	(date 1718372599444)
+@@ -1,2 +1,18 @@
+-package org.example.schoolequipment.model;public class LoanHistory {
++package org.example.schoolequipment.model;
++
++
++import java.util.Date;
++
++public class LoanHistory {
++    private String _id;
++    private String userId;
++    private String equipmentId;
++    private Date loanDate;
++    private Date returnDate;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
++
++
+Index: src/main/java/org/example/schoolequipment/model/EquipmentType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class EquipmentType {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/EquipmentType.java b/src/main/java/org/example/schoolequipment/model/EquipmentType.java
+--- a/src/main/java/org/example/schoolequipment/model/EquipmentType.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/EquipmentType.java	(date 1718695490882)
+@@ -1,2 +1,22 @@
+-package org.example.schoolequipment.model;public class EquipmentType {
++package org.example.schoolequipment.model;
++
++
++import com.google.gson.Gson;
++
++import java.util.Date;
++
++public class EquipmentType {
++    private String _id;
++    private String typeCode;
++    private String typeName;
++    private String description;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
++
++    public static EquipmentType fromJson(String json) {
++        Gson gson = new Gson();
++        return gson.fromJson(json, EquipmentType.class);
++    }
+ }
+Index: src/main/java/org/example/schoolequipment/model/Supplier.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Supplier {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Supplier.java b/src/main/java/org/example/schoolequipment/model/Supplier.java
+--- a/src/main/java/org/example/schoolequipment/model/Supplier.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Supplier.java	(date 1718372599447)
+@@ -1,2 +1,17 @@
+-package org.example.schoolequipment.model;public class Supplier {
++package org.example.schoolequipment.model;
++
++import java.util.Date;
++
++public class Supplier {
++    private String _id;
++    private String name;
++    private String email;
++    private String phoneNumber;
++    private String address;
++    private String website;
++    private String notes;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
+Index: src/main/java/org/example/schoolequipment/util/Constant.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/util/Constant.java b/src/main/java/org/example/schoolequipment/util/Constant.java
+new file mode 100644
+--- /dev/null	(date 1718722144321)
++++ b/src/main/java/org/example/schoolequipment/util/Constant.java	(date 1718722144321)
+@@ -0,0 +1,5 @@
++package org.example.schoolequipment.util;
++
++public class Constant {
++    public static final String API_ENDPOINT = "http://localhost:3000";
++}
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java
+new file mode 100644
+--- /dev/null	(date 1718722020369)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java	(date 1718722020369)
+@@ -0,0 +1,10 @@
++package org.example.schoolequipment.presentation.auth.sign_in;
++
++import javafx.beans.property.SimpleStringProperty;
++import javafx.beans.property.StringProperty;
++
++public class SignInState {
++    StringProperty identifier = new SimpleStringProperty("");
++    StringProperty password = new SimpleStringProperty("");
++    StringProperty error = new SimpleStringProperty("");
++}
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/model/Role.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Role {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Role.java b/src/main/java/org/example/schoolequipment/model/Role.java
+--- a/src/main/java/org/example/schoolequipment/model/Role.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Role.java	(date 1718372599450)
+@@ -1,2 +1,16 @@
+-package org.example.schoolequipment.model;public class Role {
++package org.example.schoolequipment.model;
++
++
++import java.util.Date;
++import java.util.List;
++
++public class Role {
++    private String _id;
++    private String name;
++    private String description;
++    private List<Permission> permissions;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java
+new file mode 100644
+--- /dev/null	(date 1718722020373)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java	(date 1718722020373)
+@@ -0,0 +1,36 @@
++package org.example.schoolequipment.presentation.auth.sign_in;
++
++import org.example.schoolequipment.api.API;
++import org.example.schoolequipment.util.HttpRequestHelper;
++
++public class SignInViewModel {
++
++    SignInState state;
++
++    SignInViewModel() {
++        this.state = new SignInState();
++    }
++
++    public Boolean fieldsValid() {
++        return !state.identifier.get().isEmpty() && !state.password.get().isEmpty();
++    }
++
++    public void clearError() {
++        state.error.set("");
++    }
++
++    public void signIn() {
++        if (!fieldsValid()) {
++            state.error.set("All fields are required");
++            return;
++        }
++        state.error.set("");
++
++        HttpRequestHelper.HttpResponse signInResponse = new API().signIn(state.identifier.get(), state.password.get());
++        if (signInResponse.getStatusCode()== 200) {
++            state.error.set("Sign in successful");
++        } else {
++            state.error.set(signInResponse.getBody());
++        }
++    }
++}
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/model/Permission.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Permission {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Permission.java b/src/main/java/org/example/schoolequipment/model/Permission.java
+--- a/src/main/java/org/example/schoolequipment/model/Permission.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Permission.java	(date 1718372599455)
+@@ -1,2 +1,9 @@
+-package org.example.schoolequipment.model;public class Permission {
++package org.example.schoolequipment.model;
++
++import java.util.List;
++
++public class Permission {
++    private String resource;
++    private List<String> actions;
++    // getters and setters
+ }
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java
+new file mode 100644
+--- /dev/null	(date 1718722020366)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java	(date 1718722020366)
+@@ -0,0 +1,87 @@
++package org.example.schoolequipment.presentation.auth.sign_in;
++
++
++import javafx.application.Application;
++import javafx.beans.value.ChangeListener;
++import javafx.geometry.HPos;
++import javafx.geometry.Insets;
++import javafx.geometry.Pos;
++import javafx.scene.Scene;
++import javafx.scene.control.Button;
++import javafx.scene.control.Label;
++import javafx.scene.control.PasswordField;
++import javafx.scene.control.TextField;
++import javafx.scene.layout.GridPane;
++import javafx.scene.paint.Color;
++import javafx.scene.text.Font;
++import javafx.stage.Stage;
++
++public class SignInScreen extends Application {
++
++    SignInViewModel viewModel;
++
++    @Override
++    public void start(Stage primaryStage) {
++        viewModel = new SignInViewModel();
++        Label displayText = new Label("Sign In");
++        Label usernameText = new Label("Username");
++        Label passwordText = new Label("Password");
++        Button signInButton = new Button("Sign In");
++        Label signInError = new Label();
++
++        TextField usernameField = new TextField();
++        PasswordField passwordField = new PasswordField();
++
++        ChangeListener<String> fieldChangeListener = (observable, oldValue, newValue) -> {
++            viewModel.clearError();
++        };
++
++        usernameField.textProperty().bindBidirectional(viewModel.state.identifier);
++        passwordField.textProperty().bindBidirectional(viewModel.state.password);
++
++        usernameField.textProperty().addListener(fieldChangeListener);
++        passwordField.textProperty().addListener(fieldChangeListener);
++
++        signInError.textProperty().bind(viewModel.state.error);
++
++        signInButton.setOnAction(e -> {
++            viewModel.signIn();
++        });
++
++        displayText.setFont(new Font(20));
++
++        GridPane layout = new GridPane();
++
++        layout.setVgap(5);
++        layout.setHgap(10);
++
++        layout.add(displayText, 0, 0, 2, 1);
++
++        layout.add(usernameText, 0, 1);
++        layout.add(usernameField, 1, 1);
++        layout.add(passwordText, 0, 2);
++        layout.add(passwordField, 1, 2);
++        layout.add(signInButton, 0, 3, 2, 1);
++        layout.add(signInError, 0, 4, 2, 1);
++
++        layout.setAlignment(Pos.CENTER);
++        GridPane.setHalignment(displayText, HPos.CENTER);
++        GridPane.setHalignment(usernameText, HPos.RIGHT);
++        GridPane.setHalignment(passwordText, HPos.RIGHT);
++        GridPane.setHalignment(signInButton, HPos.CENTER);
++        GridPane.setHalignment(signInError, HPos.CENTER);
++
++        displayText.setPadding(new Insets(10));
++        signInError.setTextFill(Color.web("#ba1a1a"));
++
++        Scene scene = new Scene(layout, 300, 300);
++        scene.getStylesheets().add(getClass().getResource("/org/example/schoolequipment/globals.css").toExternalForm());
++        primaryStage.setScene(scene);
++        primaryStage.show();
++    }
++
++    public static void main(String[] args) {
++        launch();
++    }
++}
++
+Index: src/main/java/org/example/schoolequipment/model/Location.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Location {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Location.java b/src/main/java/org/example/schoolequipment/model/Location.java
+--- a/src/main/java/org/example/schoolequipment/model/Location.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Location.java	(date 1718372599460)
+@@ -1,2 +1,15 @@
+-package org.example.schoolequipment.model;public class Location {
++package org.example.schoolequipment.model;
++
++
++import java.util.Date;
++
++public class Location {
++    private String _id;
++    private String locationName;
++    private String description;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
++
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n  <modelVersion>4.0.0</modelVersion>\r\n\r\n  <groupId>org.example</groupId>\r\n  <artifactId>SchoolEquipment</artifactId>\r\n  <version>1.0-SNAPSHOT</version>\r\n  <name>SchoolEquipment</name>\r\n\r\n  <properties>\r\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n<junit.version>5.10.0</junit.version>  </properties>\r\n\r\n  <dependencies>\r\n    <dependency>\r\n      <groupId>org.openjfx</groupId>\r\n      <artifactId>javafx-controls</artifactId>\r\n      <version>22-ea+11</version>\r\n    </dependency>\r\n    <dependency>\r\n      <groupId>org.openjfx</groupId>\r\n      <artifactId>javafx-fxml</artifactId>\r\n      <version>22-ea+11</version>\r\n    </dependency>\r\n<dependency>\r\n      <groupId>org.controlsfx</groupId>\r\n      <artifactId>controlsfx</artifactId>\r\n      <version>11.1.2</version>\r\n    </dependency><dependency>\r\n      <groupId>com.dlsc.formsfx</groupId>\r\n      <artifactId>formsfx-core</artifactId>\r\n      <version>11.6.0</version>\r\n      <exclusions>\r\n        <exclusion>\r\n          <groupId>org.openjfx</groupId>\r\n          <artifactId>*</artifactId>\r\n        </exclusion>\r\n      </exclusions>\r\n    </dependency><dependency>\r\n      <groupId>net.synedra</groupId>\r\n      <artifactId>validatorfx</artifactId>\r\n      <version>0.4.0</version>\r\n      <exclusions>\r\n        <exclusion>\r\n          <groupId>org.openjfx</groupId>\r\n          <artifactId>*</artifactId>\r\n        </exclusion>\r\n      </exclusions>\r\n    </dependency><dependency>\r\n      <groupId>org.kordamp.ikonli</groupId>\r\n      <artifactId>ikonli-javafx</artifactId>\r\n      <version>12.3.1</version>\r\n    </dependency>\r\n<dependency>\r\n      <groupId>org.junit.jupiter</groupId>\r\n      <artifactId>junit-jupiter-api</artifactId>\r\n      <version>${junit.version}</version>\r\n      <scope>test</scope>\r\n    </dependency>\r\n    <dependency>\r\n      <groupId>org.junit.jupiter</groupId>\r\n      <artifactId>junit-jupiter-engine</artifactId>\r\n      <version>${junit.version}</version>\r\n      <scope>test</scope>\r\n    </dependency>  </dependencies>\r\n\r\n  <build>\r\n    <plugins>\r\n      <plugin>\r\n        <groupId>org.apache.maven.plugins</groupId>\r\n        <artifactId>maven-compiler-plugin</artifactId>\r\n        <version>3.11.0</version>\r\n        <configuration>\r\n          <source>22</source>\r\n          <target>22</target>\r\n        </configuration>\r\n      </plugin>\r\n      <plugin>\r\n        <groupId>org.openjfx</groupId>\r\n        <artifactId>javafx-maven-plugin</artifactId>\r\n        <version>0.0.8</version>\r\n        <executions>\r\n          <execution>\r\n            <!-- Default configuration for running with: mvn clean javafx:run -->\r\n            <id>default-cli</id>\r\n            <configuration>\r\n              <mainClass>org.example.schoolequipment/org.example.schoolequipment.HelloApplication</mainClass>\r\n              <launcher>app</launcher>\r\n              <jlinkZipName>app</jlinkZipName>\r\n              <jlinkImageName>app</jlinkImageName>\r\n              <noManPages>true</noManPages>\r\n              <stripDebug>true</stripDebug>\r\n              <noHeaderFiles>true</noHeaderFiles>\r\n            </configuration>\r\n          </execution>\r\n        </executions>\r\n      </plugin>\r\n    </plugins>\r\n  </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/pom.xml	(date 1718695465490)
+@@ -2,101 +2,114 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+-  <modelVersion>4.0.0</modelVersion>
++    <modelVersion>4.0.0</modelVersion>
+ 
+-  <groupId>org.example</groupId>
+-  <artifactId>SchoolEquipment</artifactId>
+-  <version>1.0-SNAPSHOT</version>
+-  <name>SchoolEquipment</name>
++    <groupId>org.example</groupId>
++    <artifactId>SchoolEquipment</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <name>SchoolEquipment</name>
+ 
+-  <properties>
+-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-<junit.version>5.10.0</junit.version>  </properties>
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <junit.version>5.10.0</junit.version>
++    </properties>
++
+ 
+-  <dependencies>
+-    <dependency>
+-      <groupId>org.openjfx</groupId>
+-      <artifactId>javafx-controls</artifactId>
+-      <version>22-ea+11</version>
+-    </dependency>
+-    <dependency>
+-      <groupId>org.openjfx</groupId>
+-      <artifactId>javafx-fxml</artifactId>
+-      <version>22-ea+11</version>
+-    </dependency>
+-<dependency>
+-      <groupId>org.controlsfx</groupId>
+-      <artifactId>controlsfx</artifactId>
+-      <version>11.1.2</version>
+-    </dependency><dependency>
+-      <groupId>com.dlsc.formsfx</groupId>
+-      <artifactId>formsfx-core</artifactId>
+-      <version>11.6.0</version>
+-      <exclusions>
+-        <exclusion>
+-          <groupId>org.openjfx</groupId>
+-          <artifactId>*</artifactId>
+-        </exclusion>
+-      </exclusions>
+-    </dependency><dependency>
+-      <groupId>net.synedra</groupId>
+-      <artifactId>validatorfx</artifactId>
+-      <version>0.4.0</version>
+-      <exclusions>
+-        <exclusion>
+-          <groupId>org.openjfx</groupId>
+-          <artifactId>*</artifactId>
+-        </exclusion>
+-      </exclusions>
+-    </dependency><dependency>
+-      <groupId>org.kordamp.ikonli</groupId>
+-      <artifactId>ikonli-javafx</artifactId>
+-      <version>12.3.1</version>
+-    </dependency>
+-<dependency>
+-      <groupId>org.junit.jupiter</groupId>
+-      <artifactId>junit-jupiter-api</artifactId>
+-      <version>${junit.version}</version>
+-      <scope>test</scope>
+-    </dependency>
+-    <dependency>
+-      <groupId>org.junit.jupiter</groupId>
+-      <artifactId>junit-jupiter-engine</artifactId>
+-      <version>${junit.version}</version>
+-      <scope>test</scope>
+-    </dependency>  </dependencies>
++    <dependencies>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-controls</artifactId>
++            <version>22-ea+11</version>
++        </dependency>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-fxml</artifactId>
++            <version>22-ea+11</version>
++        </dependency>
++        <dependency>
++            <groupId>org.controlsfx</groupId>
++            <artifactId>controlsfx</artifactId>
++            <version>11.1.2</version>
++        </dependency>
++        <dependency>
++            <groupId>com.dlsc.formsfx</groupId>
++            <artifactId>formsfx-core</artifactId>
++            <version>11.6.0</version>
++            <exclusions>
++                <exclusion>
++                    <groupId>org.openjfx</groupId>
++                    <artifactId>*</artifactId>
++                </exclusion>
++            </exclusions>
++        </dependency>
++        <dependency>
++            <groupId>net.synedra</groupId>
++            <artifactId>validatorfx</artifactId>
++            <version>0.4.0</version>
++            <exclusions>
++                <exclusion>
++                    <groupId>org.openjfx</groupId>
++                    <artifactId>*</artifactId>
++                </exclusion>
++            </exclusions>
++        </dependency>
++        <dependency>
++            <groupId>org.kordamp.ikonli</groupId>
++            <artifactId>ikonli-javafx</artifactId>
++            <version>12.3.1</version>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-api</artifactId>
++            <version>${junit.version}</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-engine</artifactId>
++            <version>${junit.version}</version>
++            <scope>test</scope>
++        </dependency>
++
++        <dependency>
++            <groupId>com.google.code.gson</groupId>
++            <artifactId>gson</artifactId>
++            <version>2.8.9</version>
++        </dependency>
++    </dependencies>
+ 
+-  <build>
+-    <plugins>
+-      <plugin>
+-        <groupId>org.apache.maven.plugins</groupId>
+-        <artifactId>maven-compiler-plugin</artifactId>
+-        <version>3.11.0</version>
+-        <configuration>
+-          <source>22</source>
+-          <target>22</target>
+-        </configuration>
+-      </plugin>
+-      <plugin>
+-        <groupId>org.openjfx</groupId>
+-        <artifactId>javafx-maven-plugin</artifactId>
+-        <version>0.0.8</version>
+-        <executions>
+-          <execution>
+-            <!-- Default configuration for running with: mvn clean javafx:run -->
+-            <id>default-cli</id>
+-            <configuration>
+-              <mainClass>org.example.schoolequipment/org.example.schoolequipment.HelloApplication</mainClass>
+-              <launcher>app</launcher>
+-              <jlinkZipName>app</jlinkZipName>
+-              <jlinkImageName>app</jlinkImageName>
+-              <noManPages>true</noManPages>
+-              <stripDebug>true</stripDebug>
+-              <noHeaderFiles>true</noHeaderFiles>
+-            </configuration>
+-          </execution>
+-        </executions>
+-      </plugin>
+-    </plugins>
+-  </build>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <version>3.11.0</version>
++                <configuration>
++                    <source>22</source>
++                    <target>22</target>
++                </configuration>
++            </plugin>
++            <plugin>
++                <groupId>org.openjfx</groupId>
++                <artifactId>javafx-maven-plugin</artifactId>
++                <version>0.0.8</version>
++                <executions>
++                    <execution>
++                        <!-- Default configuration for running with: mvn clean javafx:run -->
++                        <id>default-cli</id>
++                        <configuration>
++                            <mainClass>org.example.schoolequipment/org.example.schoolequipment.Application
++                            </mainClass>
++                            <launcher>app</launcher>
++                            <jlinkZipName>app</jlinkZipName>
++                            <jlinkImageName>app</jlinkImageName>
++                            <noManPages>true</noManPages>
++                            <stripDebug>true</stripDebug>
++                            <noHeaderFiles>true</noHeaderFiles>
++                        </configuration>
++                    </execution>
++                </executions>
++            </plugin>
++        </plugins>
++    </build>
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java
+new file mode 100644
+--- /dev/null	(date 1718722020374)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java	(date 1718722020374)
+@@ -0,0 +1,77 @@
++package org.example.schoolequipment.presentation.auth.sign_up;
++
++import javafx.stage.Stage;
++import org.example.schoolequipment.api.API;
++import org.example.schoolequipment.presentation.auth.sign_in.SignInScreen;
++import org.example.schoolequipment.util.HttpRequestHelper;
++
++public class SignUpViewModel {
++
++    SignUpState state;
++    Stage stage;
++
++    SignUpViewModel(Stage stage) {
++        this.state = new SignUpState();
++        this.stage = stage;
++    }
++
++    public Boolean fieldsValid() {
++        return !state.userName.get().isEmpty() && !state.password.get().isEmpty() && !state.confirmPassword.get().isEmpty() && !state.fullName.get().isEmpty() && !state.email.get().isEmpty() ;
++    }
++
++    public Boolean emailValid() {
++        return state.email.get().contains("@");
++    }
++
++    public Boolean passwordMatch() {
++        return state.password.get().equals(state.confirmPassword.get());
++    }
++
++    public Boolean passwordLength() {
++        return state.password.get().length() >= 8;
++    }
++
++    public void realTimePasswordMatch() {
++        if (state.password.get().isEmpty() || state.confirmPassword.get().isEmpty()) {
++            state.error.set("");
++            return;
++        }
++        if (!state.password.get().equals(state.confirmPassword.get())) {
++            state.error.set("Passwords do not match");
++        } else {
++            state.error.set("");
++        }
++    }
++
++    public void clearError() {
++        state.error.set("");
++    }
++
++    public void signUp() {
++        if (!fieldsValid()) {
++            state.error.set("All fields are required");
++            return;
++        }
++        if (!emailValid()) {
++            state.error.set("Invalid email");
++            return;
++        }
++        if (!passwordMatch()) {
++            state.error.set("Passwords do not match");
++            return;
++        }
++        if (!passwordLength()) {
++            state.error.set("Password must be at least 8 characters long");
++            return;
++        }
++        state.error.set("");
++
++        HttpRequestHelper.HttpResponse signUpResponse = new API().signUp(state.userName.get(), state.password.get(), state.fullName.get(), state.email.get());
++        if (signUpResponse.getStatusCode()== 200) {
++            SignInScreen signInScreen = new SignInScreen();
++            signInScreen.start(stage);
++        } else {
++            state.error.set(signUpResponse.getBody());
++        }
++    }
++}
+Index: src/main/resources/org/example/schoolequipment/globals.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/org/example/schoolequipment/globals.css b/src/main/resources/org/example/schoolequipment/globals.css
+new file mode 100644
+--- /dev/null	(date 1718710276871)
++++ b/src/main/resources/org/example/schoolequipment/globals.css	(date 1718710276871)
+@@ -0,0 +1,4 @@
++.root{
++    -fx-font-family: "Lexend";
++    -fx-background: rgb(253, 247, 255);
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f9e85b76-807e-4f71-8e6a-66af0d839e5c\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/hello-view.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/hello-view.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 2\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2hs01GrYS1yfHLgQX20OM7IJaL3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f9e85b76-807e-4f71-8e6a-66af0d839e5c\" name=\"Changes\" comment=\"\" />\r\n      <created>1718367263077</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1718367263077</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/.idea/workspace.xml	(date 1718722020408)
+@@ -5,16 +5,62 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="f9e85b76-807e-4f71-8e6a-66af0d839e5c" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/api/API.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/Constant.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/globals.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/hello-view.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/Application.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Equipment.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/EquipmentType.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/LoanHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/LoanHistory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Location.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Maintenance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Maintenance.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Permission.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Role.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Supplier.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/User.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Kotlin Class" />
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;meowlet&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/meowlet/school-equipment-management.git&quot;,
++    &quot;accountId&quot;: &quot;730204e3-c274-412a-a088-a116a93615bd&quot;
++  }
++}</component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/SignUpController.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+@@ -23,22 +69,58 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 2
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 2
++}</component>
+   <component name="ProjectId" id="2hs01GrYS1yfHLgQX20OM7IJaL3" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true"
+-  }
+-}]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="D:\Projects\Coding\Kotlin_Learning\SchoolEquipment\src\main\java\org\example\schoolequipment\view\auth" />
++      <recent name="D:\Projects\Coding\Kotlin_Learning\SchoolEquipment\src\main\java\org\example\schoolequipment\view" />
++    </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="org.example.schoolequipment" />
++    </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.schoolequipment.Application" />
++      <module name="SchoolEquipment" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.schoolequipment.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.Application" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+Index: src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java b/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java
+new file mode 100644
+--- /dev/null	(date 1718720811481)
++++ b/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java	(date 1718720811481)
+@@ -0,0 +1,78 @@
++package org.example.schoolequipment.util;
++
++import java.io.BufferedReader;
++import java.io.IOException;
++import java.io.InputStreamReader;
++import java.io.OutputStream;
++import java.net.HttpURLConnection;
++import java.net.URL;
++import java.nio.charset.StandardCharsets;
++
++public class HttpRequestHelper {
++
++    public static HttpResponse sendPostRequest(String requestUrl, String requestBody) {
++        HttpResponse response = new HttpResponse();
++        try {
++            HttpURLConnection connection = getUrlConnection(requestUrl, requestBody);
++
++            response.setStatusCode(connection.getResponseCode());
++
++            StringBuilder responseBody = new StringBuilder();
++            try (BufferedReader br = new BufferedReader(
++                    new InputStreamReader(
++                            response.getStatusCode() >= 400 ? connection.getErrorStream() : connection.getInputStream(),
++                            StandardCharsets.UTF_8))) {
++                String responseLine;
++                while ((responseLine = br.readLine()) != null) {
++                    responseBody.append(responseLine.trim());
++                }
++            }
++
++            response.setBody(responseBody.toString());
++            connection.disconnect();
++
++        } catch (Exception e) {
++            response.setStatusCode(500);
++            response.setBody(e.getMessage());
++        }
++        return response;
++    }
++
++    private static HttpURLConnection getUrlConnection(String requestUrl, String requestBody) throws IOException {
++        URL url = new URL(requestUrl);
++        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
++
++        connection.setRequestMethod("POST");
++        connection.setDoOutput(true);
++
++        // Set headers if needed
++        connection.setRequestProperty("Content-Type", "application/json");
++
++        try (OutputStream os = connection.getOutputStream()) {
++            byte[] input = requestBody.getBytes(StandardCharsets.UTF_8);
++            os.write(input, 0, input.length);
++        }
++        return connection;
++    }
++
++    public static class HttpResponse {
++        private int statusCode;
++        private String body;
++
++        public int getStatusCode() {
++            return statusCode;
++        }
++
++        public void setStatusCode(int statusCode) {
++            this.statusCode = statusCode;
++        }
++
++        public String getBody() {
++            return body;
++        }
++
++        public void setBody(String body) {
++            this.body = body;
++        }
++    }
++}
+Index: src/main/java/org/example/schoolequipment/model/Equipment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class Equipment {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/Equipment.java b/src/main/java/org/example/schoolequipment/model/Equipment.java
+--- a/src/main/java/org/example/schoolequipment/model/Equipment.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/Equipment.java	(date 1718372599458)
+@@ -1,2 +1,20 @@
+-package org.example.schoolequipment.model;public class Equipment {
++package org.example.schoolequipment.model;
++
++import java.util.Date;
++
++public class Equipment {
++    private String _id;
++    private String equipmentName;
++    private String description;
++    private String status;
++    private String currentLocationId;
++    private String supplier;
++    private double price;
++    private String type;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
++
++
+Index: src/main/java/org/example/schoolequipment/api/API.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/api/API.java b/src/main/java/org/example/schoolequipment/api/API.java
+new file mode 100644
+--- /dev/null	(date 1718721608683)
++++ b/src/main/java/org/example/schoolequipment/api/API.java	(date 1718721608683)
+@@ -0,0 +1,32 @@
++package org.example.schoolequipment.api;
++
++import org.example.schoolequipment.util.Constant;
++import org.example.schoolequipment.util.HttpRequestHelper;
++
++public class API {
++    public HttpRequestHelper.HttpResponse signUp(String userName, String password, String fullName, String email) {
++        String requestUrl = Constant.API_ENDPOINT + "/auth/signup";
++
++        String requestBody = String.format("{\n" +
++                "    \"userName\": \"%s\",\n" +
++                "    \"password\": \"%s\",\n" +
++                "    \"fullName\": \"%s\",\n" +
++                "    \"email\": \"%s\"\n" +
++                "}", userName, password, fullName, email);
++
++        HttpRequestHelper.HttpResponse response = HttpRequestHelper.sendPostRequest(requestUrl, requestBody);
++        return response;
++    }
++
++    public HttpRequestHelper.HttpResponse signIn(String userName, String password) {
++        String requestUrl = Constant.API_ENDPOINT + "/auth/signin";
++
++        String requestBody = String.format("{\n" +
++                "    \"identifier\": \"%s\",\n" +
++                "    \"password\": \"%s\"\n" +
++                "}", userName, password);
++
++        HttpRequestHelper.HttpResponse response = HttpRequestHelper.sendPostRequest(requestUrl, requestBody);
++        return response;
++    }
++}
+Index: src/main/java/org/example/schoolequipment/model/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment.model;public class User {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/model/User.java b/src/main/java/org/example/schoolequipment/model/User.java
+--- a/src/main/java/org/example/schoolequipment/model/User.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/model/User.java	(date 1718372599453)
+@@ -1,2 +1,17 @@
+-package org.example.schoolequipment.model;public class User {
++package org.example.schoolequipment.model;
++
++import java.util.Date;
++
++public class User {
++    private String _id;
++    private String userName;
++    private String passwordHash;
++    private String fullName;
++    private String email;
++    private String roleId;
++    private Date createdAt;
++    private Date updatedAt;
++    private int __v;
++    // getters and setters
+ }
++
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java
+new file mode 100644
+--- /dev/null	(date 1718722020371)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java	(date 1718722020371)
+@@ -0,0 +1,110 @@
++package org.example.schoolequipment.presentation.auth.sign_up;
++
++import javafx.application.Application;
++import javafx.beans.value.ChangeListener;
++import javafx.geometry.HPos;
++import javafx.geometry.Insets;
++import javafx.geometry.Pos;
++import javafx.scene.Scene;
++import javafx.scene.control.Button;
++import javafx.scene.control.Label;
++import javafx.scene.control.PasswordField;
++import javafx.scene.control.TextField;
++import javafx.scene.layout.GridPane;
++import javafx.scene.paint.Color;
++import javafx.scene.text.Font;
++import javafx.stage.Stage;
++
++public class SignUpScreen extends Application {
++
++    SignUpViewModel viewModel;
++
++    @Override
++    public void start(Stage primaryStage) {
++        viewModel = new SignUpViewModel(primaryStage);
++        Label displayText = new Label("Sign Up");
++        Label usernameText = new Label("Username");
++        Label passwordText = new Label("Password");
++        Label fullNameText = new Label("Full Name");
++        Label emailText = new Label("Email");
++        Label confirmPasswordText = new Label("Confirm Password");
++        Button signUpButton = new Button("Sign Up");
++        Label signUpError = new Label();
++
++        TextField usernameField = new TextField();
++        PasswordField passwordField = new PasswordField();
++        TextField fullNameField = new TextField();
++        TextField emailField = new TextField();
++        PasswordField confirmPasswordField = new PasswordField();
++
++        ChangeListener<String> fieldChangeListener = (observable, oldValue, newValue) -> {
++            viewModel.clearError();
++        };
++
++        ChangeListener<String> passwordChangeListener = (observable, oldValue, newValue) -> {
++            viewModel.realTimePasswordMatch();
++        };
++
++        usernameField.textProperty().bindBidirectional(viewModel.state.userName);
++        passwordField.textProperty().bindBidirectional(viewModel.state.password);
++        fullNameField.textProperty().bindBidirectional(viewModel.state.fullName);
++        emailField.textProperty().bindBidirectional(viewModel.state.email);
++        confirmPasswordField.textProperty().bindBidirectional(viewModel.state.confirmPassword);
++
++        usernameField.textProperty().addListener(fieldChangeListener);
++        passwordField.textProperty().addListener(passwordChangeListener);
++        fullNameField.textProperty().addListener(fieldChangeListener);
++        emailField.textProperty().addListener(fieldChangeListener);
++        confirmPasswordField.textProperty().addListener(passwordChangeListener);
++
++        signUpError.textProperty().bind(viewModel.state.error);
++
++        signUpButton.setOnAction(e -> {
++            viewModel.signUp();
++        });
++
++        displayText.setFont(new Font(20));
++
++        GridPane layout = new GridPane();
++
++        layout.setVgap(5);
++        layout.setHgap(10);
++
++        layout.add(displayText, 0, 0, 2, 1);
++
++        layout.add(usernameText, 0, 1);
++        layout.add(usernameField, 1, 1);
++        layout.add(emailText, 0, 2);
++        layout.add(emailField, 1, 2);
++        layout.add(fullNameText, 0, 3);
++        layout.add(fullNameField, 1, 3);
++        layout.add(passwordText, 0, 4);
++        layout.add(passwordField, 1, 4);
++        layout.add(confirmPasswordText, 0, 5);
++        layout.add(confirmPasswordField, 1, 5);
++        layout.add(signUpButton, 0, 6, 2, 1);
++        layout.add(signUpError, 0, 7, 2, 1);
++
++        layout.setAlignment(Pos.CENTER);
++        GridPane.setHalignment(displayText, HPos.CENTER);
++        GridPane.setHalignment(usernameText, HPos.RIGHT);
++        GridPane.setHalignment(passwordText, HPos.RIGHT);
++        GridPane.setHalignment(fullNameText, HPos.RIGHT);
++        GridPane.setHalignment(emailText, HPos.RIGHT);
++        GridPane.setHalignment(confirmPasswordText, HPos.RIGHT);
++        GridPane.setHalignment(signUpButton, HPos.CENTER);
++        GridPane.setHalignment(signUpError, HPos.CENTER);
++
++        displayText.setPadding(new Insets(10));
++        signUpError.setTextFill(Color.web("#ba1a1a"));
++
++        Scene scene = new Scene(layout, 300, 300);
++        scene.getStylesheets().add(getClass().getResource("/org/example/schoolequipment/globals.css").toExternalForm());
++        primaryStage.setScene(scene);
++        primaryStage.show();
++    }
++
++    public static void main(String[] args) {
++        launch();
++    }
++}
+\ No newline at end of file
+Index: src/main/java/org/example/schoolequipment/Application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.schoolequipment;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class HelloApplication extends Application {\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(\"hello-view.fxml\"));\r\n        Scene scene = new Scene(fxmlLoader.load(), 320, 240);\r\n        stage.setTitle(\"Hello!\");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/Application.java b/src/main/java/org/example/schoolequipment/Application.java
+--- a/src/main/java/org/example/schoolequipment/Application.java	(revision e3637972db30176379359ea9747d8c1a6fe6c41d)
++++ b/src/main/java/org/example/schoolequipment/Application.java	(date 1718721608677)
+@@ -1,20 +1,15 @@
+ package org.example.schoolequipment;
+ 
+-import javafx.application.Application;
+-import javafx.fxml.FXMLLoader;
+-import javafx.scene.Scene;
+ import javafx.stage.Stage;
++import org.example.schoolequipment.presentation.auth.sign_up.SignUpScreen;
+ 
+ import java.io.IOException;
+ 
+-public class HelloApplication extends Application {
++public class Application extends javafx.application.Application {
+     @Override
+     public void start(Stage stage) throws IOException {
+-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+-        stage.setTitle("Hello!");
+-        stage.setScene(scene);
+-        stage.show();
++        SignUpScreen signUpScreen = new SignUpScreen();
++        signUpScreen.start(stage);
+     }
+ 
+     public static void main(String[] args) {
+Index: src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java
+new file mode 100644
+--- /dev/null	(date 1718721608685)
++++ b/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java	(date 1718721608685)
+@@ -0,0 +1,14 @@
++package org.example.schoolequipment.presentation.auth.sign_up;
++
++import javafx.beans.property.SimpleStringProperty;
++import javafx.beans.property.StringProperty;
++
++public class SignUpState {
++    StringProperty userName = new SimpleStringProperty("");
++    StringProperty password = new SimpleStringProperty("");
++    StringProperty confirmPassword = new SimpleStringProperty("");
++    StringProperty fullName = new SimpleStringProperty("");
++    StringProperty email = new SimpleStringProperty("");
++
++    StringProperty error = new SimpleStringProperty("");
++}
+\ No newline at end of file
