@@ -9,8 +9,12 @@ module org.example.schoolequipment {
     requires java.net.http;
     requires com.google.gson;
 
+    opens org.example.schoolequipment.model to javafx.base, com.google.gson;
+
     opens org.example.schoolequipment to javafx.fxml;
     exports org.example.schoolequipment;
+    exports org.example.schoolequipment.model to com.google.gson;
+
     exports org.example.schoolequipment.presentation.auth.sign_in;
     exports org.example.schoolequipment.presentation.auth.sign_up;
     opens org.example.schoolequipment.presentation.auth.sign_up to javafx.fxml;
