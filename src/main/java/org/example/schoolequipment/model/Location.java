@@ -10,6 +10,30 @@ public class Location {
     private Date createdAt;
     private Date updatedAt;
     private int __v;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public int get__v() {
+        return __v;
+    }
     // getters and setters
 }
 

@@ -19,4 +19,32 @@ public class EquipmentType {
         Gson gson = new Gson();
         return gson.fromJson(json, EquipmentType.class);
     }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public int get__v() {
+        return __v;
+    }
 }
