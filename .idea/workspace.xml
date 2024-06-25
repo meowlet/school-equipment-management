@@ -4,37 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9e85b76-807e-4f71-8e6a-66af0d839e5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/api/API.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_in/SignInViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/sign_up/SignUpViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/schoolequipment/globals.css" afterDir="false" />
+    <list default="true" id="f9e85b76-807e-4f71-8e6a-66af0d839e5c" name="Changes" comment="Feature: Choose an entry point">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/home/HomeScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/home/HomeState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/presentation/auth/home/HomeViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/controller/auth/SignUpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/helper/HttpRequestHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/api/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/api/API.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Equipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/EquipmentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/LoanHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/LoanHistory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Maintenance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Maintenance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/schoolequipment/util/HttpRequestHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -130,6 +123,82 @@
       <option name="presentableId" value="Default" />
       <updated>1718367263077</updated>
     </task>
+    <task id="LOCAL-00001" summary="Feature: Make the API class">
+      <option name="closed" value="true" />
+      <created>1718732177226</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732177226</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Chore: Remove the controller package">
+      <option name="closed" value="true" />
+      <created>1718732240031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732240031</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix: Make the helper does not throw E if there is a bad request">
+      <option name="closed" value="true" />
+      <created>1718732291719</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732291719</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feature: Add some DTOs">
+      <option name="closed" value="true" />
+      <created>1718732323275</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732323275</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feature: Make the SignInScreen (using MVVM architecture)">
+      <option name="closed" value="true" />
+      <created>1718732367625</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732367625</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Feature: Make the SignUpScreen (using MVVM architecture)">
+      <option name="closed" value="true" />
+      <created>1718732383507</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732383507</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feature: Make a class for Constants">
+      <option name="closed" value="true" />
+      <created>1718732421964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732421964</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Feature: Choose an entry point">
+      <option name="closed" value="true" />
+      <created>1718732472269</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732472269</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Feature: Make the API class" />
+    <MESSAGE value="Chore: Remove the controller package" />
+    <MESSAGE value="Fix: Make the helper does not throw E if there is a bad request" />
+    <MESSAGE value="Feature: Add some DTOs" />
+    <MESSAGE value="Feature: Make the SignInScreen (using MVVM architecture)" />
+    <MESSAGE value="Feature: Make the SignUpScreen (using MVVM architecture)" />
+    <MESSAGE value="Feature: Make a class for Constants" />
+    <MESSAGE value="Feature: Choose an entry point" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature: Choose an entry point" />
   </component>
 </project>
