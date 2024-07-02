@@ -43,6 +43,7 @@ public class SignUpViewModel {
         }
     }
 
+
     public void clearError() {
         state.error.set("");
     }
@@ -68,10 +69,14 @@ public class SignUpViewModel {
 
         HttpRequestHelper.HttpResponse signUpResponse = new API().signUp(state.userName.get(), state.password.get(), state.fullName.get(), state.email.get());
         if (signUpResponse.getStatusCode()== 200) {
-            SignInScreen signInScreen = new SignInScreen();
-            signInScreen.start(stage);
+            navigateToSignIn();
         } else {
             state.error.set(signUpResponse.getBody());
         }
+    }
+
+    public void navigateToSignIn() {
+        SignInScreen signInScreen = new SignInScreen();
+        signInScreen.start(stage);
     }
 }

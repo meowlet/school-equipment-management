@@ -2,14 +2,13 @@ package org.example.schoolequipment.presentation.auth.sign_up;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -30,6 +29,16 @@ public class SignUpScreen extends Application {
         Label confirmPasswordText = new Label("Confirm Password");
         Button signUpButton = new Button("Sign Up");
         Label signUpError = new Label();
+
+        Hyperlink signInLink = new Hyperlink();
+        signInLink.setText("Already have an account? Sign in now!");
+
+        signInLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                viewModel.navigateToSignIn();
+            }
+        });
 
         TextField usernameField = new TextField();
         PasswordField passwordField = new PasswordField();
@@ -84,6 +93,7 @@ public class SignUpScreen extends Application {
         layout.add(confirmPasswordField, 1, 5);
         layout.add(signUpButton, 0, 6, 2, 1);
         layout.add(signUpError, 0, 7, 2, 1);
+        layout.add(signInLink, 0, 8, 2, 1);
 
         layout.setAlignment(Pos.CENTER);
         GridPane.setHalignment(displayText, HPos.CENTER);
@@ -94,6 +104,7 @@ public class SignUpScreen extends Application {
         GridPane.setHalignment(confirmPasswordText, HPos.RIGHT);
         GridPane.setHalignment(signUpButton, HPos.CENTER);
         GridPane.setHalignment(signUpError, HPos.CENTER);
+        GridPane.setHalignment(signInLink, HPos.CENTER);
 
         displayText.setPadding(new Insets(10));
         signUpError.setTextFill(Color.web("#ba1a1a"));

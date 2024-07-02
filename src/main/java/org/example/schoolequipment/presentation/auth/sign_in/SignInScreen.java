@@ -3,14 +3,13 @@ package org.example.schoolequipment.presentation.auth.sign_in;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -22,12 +21,22 @@ public class SignInScreen extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        viewModel = new SignInViewModel();
+        viewModel = new SignInViewModel(primaryStage);
         Label displayText = new Label("Sign In");
         Label usernameText = new Label("Username");
         Label passwordText = new Label("Password");
         Button signInButton = new Button("Sign In");
         Label signInError = new Label();
+
+        Hyperlink signUpLink = new Hyperlink();
+        signUpLink.setText("Don't have an account? Sign up now!");
+
+        signUpLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                viewModel.navigateToSignUp();
+            }
+        });
 
         TextField usernameField = new TextField();
         PasswordField passwordField = new PasswordField();
@@ -63,6 +72,7 @@ public class SignInScreen extends Application {
         layout.add(passwordField, 1, 2);
         layout.add(signInButton, 0, 3, 2, 1);
         layout.add(signInError, 0, 4, 2, 1);
+        layout.add(signUpLink, 0, 5, 2, 1);
 
         layout.setAlignment(Pos.CENTER);
         GridPane.setHalignment(displayText, HPos.CENTER);
