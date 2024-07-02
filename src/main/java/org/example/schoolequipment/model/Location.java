@@ -35,5 +35,14 @@ public class Location {
         return __v;
     }
     // getters and setters
+
+    @Override
+    public String toString() {
+        return locationName;
+    }
+
+    public String getID() {
+        return _id;
+    }
 }
 

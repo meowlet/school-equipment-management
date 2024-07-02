@@ -47,4 +47,13 @@ public class EquipmentType {
     public int get__v() {
         return __v;
     }
+
+    @Override
+    public String toString() {
+        return typeName;
+    }
+
+    public String getID() {
+        return _id;
+    }
 }

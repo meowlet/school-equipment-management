@@ -54,4 +54,13 @@ public class Supplier {
         return __v;
     }
     // getters and setters
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public String getID() {
+        return _id;
+    }
 }
