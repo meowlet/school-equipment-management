@@ -1,4 +1,240 @@
-.root{
-    -fx-font-family: "Lexend";
-    -fx-background: rgb(253, 247, 255);
+/* Global Styles */
+.root {
+    -fx-font-family: "Lexend", sans-serif;
+    -fx-background-color: #FEF7FF; /* background */
+}
+
+/* Top Bar Styles */
+.nav-bar {
+    -fx-padding: 10px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF; /* onPrimary */
+    -fx-font-size: 16px;
+}
+
+.app-name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.user-name {
+    -fx-font-size: 14px;
+}
+
+/* Button Styles */
+.button {
+    -fx-background-color: #68548E; /* primary */
+    -fx-text-fill: #FFFFFF; /* onPrimary */
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-background-radius: 4;
+}
+
+.button:hover {
+    -fx-background-color: #4F3D74; /* primaryContainer */
+}
+
+/* Text Field Styles */
+.text-field {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-text-fill: #1D1B20; /* onSurface */
+    -fx-prompt-text-fill: #49454E; /* onSurfaceVariant */
+    -fx-padding: 8;
+    -fx-background-radius: 4;
+    -fx-border-color: #79757F; /* outline */
+    -fx-border-radius: 4;
+}
+
+/* Table Styles */
+.table-view {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-table-cell-border-color: transparent;
+    -fx-fixed-cell-size: 40; /* Adjust this value to fit your needs */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #68548E; /* primary */
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #EBDDFF; /* onPrimaryContainer */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF; /* onPrimary */
+    -fx-font-weight: bold;
+}
+
+/* Table Row/Cell Styles */
+.table-row-cell {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F8F1FA; /* surfaceContainerLow */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #EBDDFF; /* primaryContainer */
+    -fx-text-fill: #230F46; /* onPrimaryContainer */
+}
+
+.table-cell {
+    -fx-text-fill: #1D1B20; /* onSurface */
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 0 10 0 10;
+}
+
+/* ComboBox Styles */
+.combo-box-base {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-border-color: #79757F; /* outline */
+    -fx-border-radius: 4;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-border-color: #79757F; /* outline */
+    -fx-border-radius: 4;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-text-fill: #1D1B20; /* onSurface */
+}
+
+/* Form Styles */
+.form-pane {
+    -fx-background-color: #FEF7FF; /* background */
+    -fx-padding: 20;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.label {
+    -fx-text-fill: #1D1B20; /* onSurface */
+}
+
+/* Error Message */
+.form-error {
+    -fx-text-fill: #BA1A1A; /* error */
+}
+
+/* Search Bar */
+#searchBar {
+    -fx-pref-width: 250;
+}
+
+/* Clear Button */
+#clearButton {
+    -fx-background-color: #635B70; /* secondary */
+}
+
+#clearButton:hover {
+    -fx-background-color: #4B4358; /* secondaryContainer */
+}
+
+/* Create Equipment Button */
+#createEquipmentButton {
+    -fx-background-color: #7E525D; /* tertiary */
+    -fx-text-fill: #FFFFFF; /* onTertiary */
+}
+
+#createEquipmentButton:hover {
+    -fx-background-color: #643B46; /* tertiaryContainer */
+}
+
+/* Update and Delete Buttons */
+.action-button {
+    -fx-min-width: 80;
+}
+
+.update-button {
+    -fx-background-color: #635B70; /* secondary */
+}
+
+.update-button:hover {
+    -fx-background-color: #4B4358; /* secondaryContainer */
+}
+
+.delete-button {
+    -fx-background-color: #BA1A1A; /* error */
+}
+
+.delete-button:hover {
+    -fx-background-color: #93000A; /* errorContainer */
+}
+
+/* Pagination Styles */
+.pagination {
+    -fx-page-information-visible: false;
+}
+
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 4;
+}
+
+.pagination > .pagination-control > .control-box > .number-button,
+.pagination > .pagination-control > .control-box > .bullet-button,
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button {
+
+    -fx-background-radius: 25%;
+    -fx-background-insets: 0, 1;
+    -fx-background-color: #FFFFFF, #FFFFFF;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+}
+
+.pagination > .pagination-control > .control-box > .number-button:hover,
+.pagination > .pagination-control > .control-box > .bullet-button:hover{
+
+    -fx-background-radius: 25%;
+    -fx-background-insets: 0;
+    -fx-background-color: #EBDDFF; /* primaryContainer */
+}
+
+.pagination > .pagination-control > .control-box > .number-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected {
+
+    -fx-background-radius: 25%;
+    -fx-background-insets: 0;
+    -fx-background-color: #68548E; /* primary */
+    -fx-text-fill: #FFFFFF; /* onPrimary */
+}
+
+/* Pagination Styles */
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button {
+    -fx-background-color: #635B70; /* primary */
+    -fx-background-radius: 50%;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-padding: 5px;
+}
+
+.pagination > .pagination-control > .control-box > .left-arrow-button:hover,
+.pagination > .pagination-control > .control-box > .right-arrow-button:hover {
+    -fx-background-radius: 50%;
+    -fx-background-insets: 0;
+    -fx-background-color: #4F3D74; /* primaryContainer */
+}
+
+.pagination > .pagination-control > .control-box > .left-arrow-button > .left-arrow,
+.pagination > .pagination-control > .control-box > .right-arrow-button > .right-arrow {
+    -fx-background-color: #FFFFFF; /* onPrimary */
+}
+
+/* Items per page field */
+#itemsPerPageField {
+    -fx-pref-width: 50;
+    -fx-alignment: CENTER;
 }
