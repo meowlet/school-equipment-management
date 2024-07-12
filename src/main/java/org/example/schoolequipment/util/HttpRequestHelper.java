@@ -14,10 +14,25 @@ public class HttpRequestHelper {
     public static HttpResponse sendPostRequest(String requestUrl, String requestBody, Map<String, String> headers) {
         HttpResponse response = new HttpResponse();
         try {
-            HttpURLConnection connection = getUrlConnection(requestUrl, requestBody, headers);
+            HttpURLConnection connection = (HttpURLConnection) new URL(requestUrl).openConnection();
+            connection.setRequestMethod("POST"); // Use POST as a workaround for PATCH
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json");
+
+            // Set headers if provided, before opening the connection
+            if (headers != null) {
+                for (Map.Entry<String, String> header : headers.entrySet()) {
+                    connection.setRequestProperty(header.getKey(), header.getValue());
+                }
+            }
+
+            // Now that all properties are set, open the connection by getting the OutputStream
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = requestBody.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
 
             response.setStatusCode(connection.getResponseCode());
-
             StringBuilder responseBody = new StringBuilder();
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(
@@ -28,10 +43,27 @@ public class HttpRequestHelper {
                     responseBody.append(responseLine.trim());
                 }
             }
-
             response.setBody(responseBody.toString());
             connection.disconnect();
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setBody(e.getMessage());
+        }
+        return response;
+    }
 
+    //delete request
+    public static HttpResponse sendDeleteRequest(String requestUrl, Map<String, String> headers) {
+        HttpResponse response = new HttpResponse();
+        try {
+            HttpURLConnection connection = getUrlConnection(requestUrl, null, headers);
+
+            connection.setRequestMethod("DELETE");
+
+            response.setStatusCode(connection.getResponseCode());
+            response.setBody(readResponse(connection));
+
+            connection.disconnect();
         } catch (Exception e) {
             response.setStatusCode(500);
             response.setBody(e.getMessage());
