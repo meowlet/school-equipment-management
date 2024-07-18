@@ -1,11 +1,13 @@
 package org.example.schoolequipment.api;
 
+import org.example.schoolequipment.model.Permission;
 import org.example.schoolequipment.util.Constant;
 import org.example.schoolequipment.util.HttpRequestHelper;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class API {
@@ -115,6 +117,100 @@ public class API {
 
     public HttpRequestHelper.HttpResponse deleteEquipment(String equipmentId) {
         String requestUrl = Constant.API_ENDPOINT + "/equipment/" + equipmentId;
+
+        return HttpRequestHelper.sendDeleteRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse getUser() {
+        String requestUrl = Constant.API_ENDPOINT + "/user/me";
+
+        return HttpRequestHelper.sendGetRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse fetchUsers(String query) {
+        String requestUrl = Constant.API_ENDPOINT + "/user?" + query;
+
+        System.out.println(requestUrl);
+
+        return HttpRequestHelper.sendGetRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse fetchRoles(String query) {
+        String requestUrl = Constant.API_ENDPOINT + "/role?" + query;
+
+        System.out.println(requestUrl);
+
+        return HttpRequestHelper.sendGetRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse fetchUsersByRole(String id) {
+        String requestUrl = Constant.API_ENDPOINT + "/user/role/" + id;
+
+        return HttpRequestHelper.sendGetRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse searchUsers(String query) {
+        String requestUrl = Constant.API_ENDPOINT + "/user?query=" + query;
+
+        return HttpRequestHelper.sendGetRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse createUser(String name, String email, String password, String id) {
+        return null;
+    }
+
+    public HttpRequestHelper.HttpResponse updateUser(String userId, String name, String email, String password, String id) {
+        String requestUrl = Constant.API_ENDPOINT + "/user";
+
+        String requestBody = String.format("""
+                {
+                    "userId": "%s",
+                    "fullName": "%s",
+                    "email": "%s",
+                    "password": "%s",
+                    "roleId": "%s"
+                }""", userId, name, email, password, id);
+
+        return HttpRequestHelper.sendPatchRequest(requestUrl, requestBody, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse deleteUser(String userId) {
+        String requestUrl = Constant.API_ENDPOINT + "/user/" + userId;
+
+        return HttpRequestHelper.sendDeleteRequest(requestUrl, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse createRole(String name, String description, List<Permission> permissions) {
+        String requestUrl = Constant.API_ENDPOINT + "/role";
+
+        String requestBody = String.format("""
+                {
+                    "name": "%s",
+                    "description": "%s",
+                    "permissions": %s
+                }""", name, description, permissions);
+
+        System.out.println(requestBody);
+
+        return HttpRequestHelper.sendPostRequest(requestUrl, requestBody, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse updateRole(String roleId, String name, String description, List<Permission> permissions) {
+        String requestUrl = Constant.API_ENDPOINT + "/role";
+
+        String requestBody = String.format("""
+                {
+                    "roleId": "%s",
+                    "name": "%s",
+                    "description": "%s",
+                    "permissions": %s
+                }""", roleId, name, description, permissions);
+
+        return HttpRequestHelper.sendPatchRequest(requestUrl, requestBody, headers);
+    }
+
+    public HttpRequestHelper.HttpResponse deleteRole(String roleId) {
+        String requestUrl = Constant.API_ENDPOINT + "/role/" + roleId;
 
         return HttpRequestHelper.sendDeleteRequest(requestUrl, headers);
     }
