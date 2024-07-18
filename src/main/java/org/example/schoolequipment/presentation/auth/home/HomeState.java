@@ -1,12 +1,10 @@
 package org.example.schoolequipment.presentation.auth.home;
 
+import javafx.beans.Observable;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.example.schoolequipment.model.Equipment;
-import org.example.schoolequipment.model.EquipmentType;
-import org.example.schoolequipment.model.Location;
-import org.example.schoolequipment.model.Supplier;
+import org.example.schoolequipment.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +22,8 @@ public class HomeState {
     private final ObjectProperty<Map<String, String>> equipmentData = new SimpleObjectProperty<>(new HashMap<>());
     private final IntegerProperty totalItems = new SimpleIntegerProperty(0);
     private final SimpleBooleanProperty loading = new SimpleBooleanProperty(false);
+    // User property
+    private final ObjectProperty<User> user = new SimpleObjectProperty<>(new User());
 
     public BooleanProperty loadingProperty() {
         return loading;
@@ -132,5 +132,17 @@ public class HomeState {
 
     public void setLoading(boolean b) {
         loading.set(b);
+    }
+
+    public User getUser() {
+        return user.get();
+    }
+
+    public ObjectProperty<User> userProperty() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user.set(user);
     }
 }

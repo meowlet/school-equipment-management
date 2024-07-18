@@ -2,18 +2,22 @@ package org.example.schoolequipment.presentation.auth.home;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.example.schoolequipment.api.API;
-import org.example.schoolequipment.model.Equipment;
-import org.example.schoolequipment.model.EquipmentType;
-import org.example.schoolequipment.model.Location;
-import org.example.schoolequipment.model.Supplier;
+import org.example.schoolequipment.model.*;
+import org.example.schoolequipment.presentation.auth.role_management.RoleManagementScreen;
 import org.example.schoolequipment.presentation.auth.sign_in.SignInScreen;
+import org.example.schoolequipment.presentation.auth.user_management.UserManagementScreen;
+import org.example.schoolequipment.util.Constant;
 import org.example.schoolequipment.util.HttpRequestHelper;
 
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +38,15 @@ public class HomeViewModel {
         this.state = new HomeState();
         this.api = new API();
 
-        // Set up listeners for reactive updates
-        state.queryProperty().addListener((observable, oldValue, newValue) -> fetchEquipments());
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+
+        state.queryProperty().addListener((observable, oldValue, newValue) -> {
+            pause.stop();
+            pause.setOnFinished(event -> {
+                fetchEquipments();
+            });
+            pause.playFromStart();
+        });
         state.filtersProperty().addListener((observable, oldValue, newValue) -> fetchEquipments());
     }
 
@@ -51,6 +62,35 @@ public class HomeViewModel {
 
     private void navigateToSignIn() {
         new SignInScreen().start(stage);
+    }
+
+    public void navigateToUserManagement() {
+        new UserManagementScreen().start(stage);
+    }
+
+    public void getUser() {
+        Task<Void> getUserTask = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                HttpRequestHelper.HttpResponse response = api.getUser();
+                if (response.getStatusCode() == 200) {
+                    // Parse the user object from the response body
+                    Gson gson = new Gson();
+                    User user = gson.fromJson(response.getBody(), User.class);
+
+                    Platform.runLater(() -> {
+                        state.setUser(user);
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        state.setError(response.getBody());
+                    });
+                }
+                return null;
+            }
+        };
+
+        new Thread(getUserTask).start();
     }
 
     public void fetchEquipments() {
@@ -127,6 +167,11 @@ public class HomeViewModel {
             if ("limit".equals(filter.getKey()) && !includeLimit) {
                 continue; // Skip adding the limit filter to the query
             }
+
+            if ("page".equals(filter.getKey()) && !includeLimit) {
+                continue; // Skip adding the page filter to the query
+            }
+
             if (!filter.getValue().isEmpty()) {
                 if (!query.isEmpty()) {
                     query.append("&");
@@ -152,8 +197,13 @@ public class HomeViewModel {
     public void clearFilters() {
         state.setFilters(new HashMap<>());
         state.setQuery("");
+        state.setTotalItems(0);
         isClearingFilters = false;
         fetchEquipments();
+    }
+
+    public void navigateToRoleManagement() {
+        new RoleManagementScreen().start(stage);
     }
 
     public void fetchAll() {
@@ -261,5 +311,15 @@ public class HomeViewModel {
         };
 
         new Thread(deleteTask).start();
+    }
+
+    public void logout() {
+        //delete the credentials file
+        try {
+            Files.deleteIfExists(Paths.get(Constant.CREDENTIALS_FILE));
+            navigateToSignIn();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

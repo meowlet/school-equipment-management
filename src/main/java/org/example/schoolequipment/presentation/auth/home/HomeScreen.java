@@ -1,6 +1,8 @@
 package org.example.schoolequipment.presentation.auth.home;
 
 import javafx.application.Application;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -9,7 +11,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.control.CheckComboBox;
 import org.example.schoolequipment.model.Equipment;
@@ -33,13 +37,19 @@ public class HomeScreen extends Application {
     private int currentPage = 0;
     private int itemsPerPage = 5;
     private ProgressIndicator loadingIndicator = new ProgressIndicator();
+    private VBox sidebar;
+    private BooleanProperty isSidebarVisible =  new SimpleBooleanProperty(false);
+    private StackPane root;
+    private BorderPane mainContent;
+
 
     @Override
     public void start(Stage primaryStage) {
-
         primaryStage.setTitle("School Equipment Management");
         updateStage = new Stage();
         viewModel = new HomeViewModel(primaryStage);
+
+        viewModel.getUser();
         viewModel.getState().loadingProperty().addListener((obs, oldVal, newVal) -> {
             showLoading(newVal);
         });
@@ -49,11 +59,20 @@ public class HomeScreen extends Application {
         viewModel.getState().getFilters().put("limit", String.valueOf(itemsPerPage));
         viewModel.fetchAll();
 
-        BorderPane layout = new BorderPane();
-        layout.setTop(createNavBar());
-        layout.setCenter(createMainContent());
+        root = new StackPane();
+        mainContent = new BorderPane();
 
-        Scene scene = new Scene(layout, 1024, 768);
+        mainContent.setTop(createNavBar());
+        mainContent.setCenter(createMainContent());
+
+        sidebar = createSidebar();
+        sidebar.setVisible(false);
+        sidebar.setManaged(false);
+
+        root.getChildren().addAll(mainContent, sidebar);
+        StackPane.setAlignment(sidebar, Pos.CENTER_LEFT);
+
+        Scene scene = new Scene(root, 1024, 768);
         scene.getStylesheets().add(getClass().getResource("/org/example/schoolequipment/globals.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -79,6 +98,10 @@ public class HomeScreen extends Application {
             viewModel.fetchEquipments();
         });
 
+        viewModel.getState().totalItemsProperty().addListener((obs, oldVal, newVal) -> {
+            pagination.setPageCount(calculatePageCount());
+        });
+
         itemsPerPageField = new TextField(String.valueOf(itemsPerPage));
         itemsPerPageField.setId("itemsPerPageField");
         itemsPerPageField.setOnAction(e -> updateItemsPerPage());
@@ -96,6 +119,9 @@ public class HomeScreen extends Application {
             if (newItemsPerPage > 0) {
                 itemsPerPage = newItemsPerPage;
                 viewModel.getState().getFilters().put("limit", String.valueOf(itemsPerPage));
+                currentPage = 0; // Reset to first page when changing items per page
+                pagination.setCurrentPageIndex(currentPage);
+                pagination.setPageCount(calculatePageCount());
                 viewModel.fetchEquipments();
             }
         } catch (NumberFormatException ex) {
@@ -106,13 +132,14 @@ public class HomeScreen extends Application {
 
     private int calculatePageCount() {
         int totalItems = viewModel.getState().getTotalItems();
-        System.out.println(totalItems);
         return (int) Math.ceil((double) totalItems / itemsPerPage);
     }
+
 
     private HBox createNavBar() {
         Button showSidebarButton = new Button("☰");
         showSidebarButton.getStyleClass().add("nav-button");
+        showSidebarButton.setOnAction(e -> toggleSidebar());
 
         Label appNameLabel = new Label("School Equipment Manager");
         appNameLabel.getStyleClass().add("app-name");
@@ -120,29 +147,103 @@ public class HomeScreen extends Application {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        Label userNameLabel = new Label("John Doe");
+        Label userNameLabel = new Label("N/A");
         userNameLabel.getStyleClass().add("user-name");
 
         MenuButton userMenuButton = new MenuButton("▼");
         userMenuButton.getStyleClass().add("nav-button");
+        MenuItem signOutMenuItem = new MenuItem("Sign Out");
         userMenuButton.getItems().addAll(
                 new MenuItem("Manage Profile"),
                 new MenuItem("Settings"),
                 new SeparatorMenuItem(),
-                new MenuItem("Logout")
+                signOutMenuItem
+
         );
+
+        signOutMenuItem.setOnAction(e -> {
+            viewModel.logout();
+        });
 
         HBox navBar = new HBox(10, showSidebarButton, appNameLabel, spacer, userNameLabel, userMenuButton);
         navBar.setAlignment(Pos.CENTER_LEFT);
         navBar.setPadding(new Insets(10));
         navBar.getStyleClass().add("nav-bar");
 
+        viewModel.getState().userProperty().addListener((obs, oldVal, newVal) -> {
+            System.out.println("triggered");
+            if (newVal != null) {
+                System.out.println(newVal.getFullName());
+                userNameLabel.setText(newVal.getFullName());
+            }
+        });
+
         return navBar;
     }
 
-    private VBox createMainContent() {
-        VBox mainContent = new VBox(10);
-        mainContent.setPadding(new Insets(20));
+    private VBox createSidebar() {
+        VBox sidebar = new VBox(10);
+        sidebar.setPrefWidth(200);
+        sidebar.getStyleClass().add("sidebar");
+        sidebar.setPadding(new Insets(10));
+
+        VBox sidebarContent = new VBox(10);
+        sidebarContent.getStyleClass().add("sidebar-content");
+
+        String[] pages = {"Home", "Equipment", "Loan History", "Maintenance", "Users", "Roles"};
+        for (String page : pages) {
+            Button pageButton = new Button(page);
+            if (page.equals("Home")) {
+                pageButton.getStyleClass().add("sidebar-button-active");
+            } else {
+                pageButton.getStyleClass().add("sidebar-button");
+            }
+            pageButton.setMaxWidth(Double.MAX_VALUE);
+            pageButton.setOnAction(e -> handlePageNavigation(page));
+            sidebarContent.getChildren().add(pageButton);
+        }
+
+        sidebar.getChildren().addAll(sidebarContent);
+
+        return sidebar;
+    }
+
+    private void toggleSidebar() {
+        isSidebarVisible.set(!isSidebarVisible.get());
+        sidebar.setVisible(isSidebarVisible.get());
+        sidebar.setManaged(isSidebarVisible.get());
+    }
+
+    private void handlePageNavigation(String page) {
+        System.out.println("Navigating to " + page);
+        // switch case to navigate to different pages
+        switch (page) {
+            case "Home" -> {
+                // do nothing
+            }
+            case "Equipment" -> {
+                // navigate to equipment page
+            }
+            case "Loan History" -> {
+                // navigate to loan history page
+            }
+            case "Maintenance" -> {
+                // navigate to maintenance page
+            }
+            case "Users" -> {
+                viewModel.navigateToUserManagement();
+            }
+            case "Roles" -> {
+                viewModel.navigateToRoleManagement();
+            }
+        }
+    }
+
+    private BorderPane createMainContent() {
+        BorderPane mainContent = new BorderPane();
+
+        VBox contentArea = new VBox(10);
+        contentArea.setPadding(new Insets(20));
         createLoadingIndicator();
 
         StackPane contentPane = new StackPane();
@@ -152,10 +253,20 @@ public class HomeScreen extends Application {
         );
         StackPane.setAlignment(loadingIndicator, Pos.CENTER);
 
-        mainContent.getChildren().addAll(
+        contentArea.getChildren().addAll(
                 createTopBar(),
                 contentPane
         );
+
+        mainContent.setCenter(contentArea);
+        isSidebarVisible.addListener((obs, oldVal, newVal) -> {
+            if (newVal) {
+                mainContent.setLeft(sidebar);
+            } else {
+                mainContent.setLeft(null);
+            }
+        });
+
         return mainContent;
     }
 
