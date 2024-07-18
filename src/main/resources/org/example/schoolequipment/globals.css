@@ -5,15 +5,7 @@
 }
 
 /* Top Bar Styles */
-.nav-bar {
-    -fx-padding: 10px;
-}
 
-.nav-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF; /* onPrimary */
-    -fx-font-size: 16px;
-}
 
 .app-name {
     -fx-font-size: 20px;
@@ -107,7 +99,7 @@
 }
 
 .combo-box .list-cell {
-    -fx-background-color: #FFFFFF; /* surfaceContainerLowest */
+    -fx-background-color: transparent; /* surfaceContainerLowest */
     -fx-text-fill: #1D1B20; /* onSurface */
 }
 
@@ -237,4 +229,50 @@
 #itemsPerPageField {
     -fx-pref-width: 50;
     -fx-alignment: CENTER;
+}
+
+.nav-bar {
+    -fx-padding: 10px;
+}
+
+.sidebar {
+    -fx-background-color: transparent;
+    -fx-padding-top: 10;
+}
+
+.sidebar-content {
+    -fx-spacing: 10;
+}
+
+.sidebar-button {
+    -fx-background-color: #FEF7FF; /* background */
+    -fx-text-fill: #1D1B20; /* onBackground */
+    -fx-alignment: CENTER-LEFT;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #EBDDFF; /* primaryContainer */
+    -fx-text-fill: #230F46; /* onPrimaryContainer */
+}
+
+.close-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333;
+    -fx-font-size: 18;
+    -fx-padding: 0 0 5 0;
+}
+
+.close-button:hover {
+    -fx-text-fill: #ff0000;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #EBDDFF; /* primaryContainer */
+    -fx-text-fill: #230F46; /* onPrimaryContainer */
+    -fx-alignment: CENTER-LEFT;
+}
+
+.sidebar-button-active:hover {
+    -fx-background-color: #EBDDFF; /* primaryContainer */
+    -fx-text-fill: #230F46; /* onPrimaryContainer */
 }
